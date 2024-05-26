@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="icon" href="resorces/user(1).png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+         .border{
+            border:blueviolet; 
+            border-width:14px; 
+            border-style:solid;
+            
+        }
+        .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	gap: 20px;
+}
+.container img {
+	height: 400px;
+	width: 400px;
+}
+.signup-form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 400px;
+}
+ .container input h1 {
+	margin-top: 0px;
+} 
+/* .p{ 
+    margin-top: 0px;
+} */
+.button{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.b{
+    border-radius: 20% ;
+    color: #fff;
+    background-color: blueviolet;
+    height: 5vh;
+    width: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-box{
+            background: #fff;
+            display: flex;
+            align-items: center;
+            position: relative;
+}
+.input-box img{
+            width: 20px; /* Adjust width as needed */
+            height: 20px; /* Adjust height as needed */
+            cursor: pointer;
+            position: absolute; /* Add this line */
+            right: 80px;
+}
+.input-box1{
+            background: #fff;
+            display: flex;
+            align-items: center;
+            position: relative;
+}
+.input-box1 img{
+            width: 20px; /* Adjust width as needed */
+            height: 20px; /* Adjust height as needed */
+            cursor: pointer;
+            position: absolute; /* Add this line */
+            right: 10px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="border">
+    <form class="container" id="signup_form">
+        <img  src="resorces/ed.jpg">
+        <div class="input">
+           <h1 class="p"> Welcome <i class="fa-solid fa-user fa-2xl"></i></h1><br><br>
+           <label for="Sign_in_username">Username : </label>
+           <input type="text" name="Sign_in_username" id="Sign_in_username" required><br><br>
+           <div class="input-box"><label for="sign_in_password">Password :</label>
+           <input type="password" name="sign_in_password" id="sign_in_password" required>
+           <img id="eyeicon" src="resorces/eye-close.png"></div><br><br>
+           <div class="input-box1"><label for="sign_in_password"> Confirmed Password :</label>
+           <input type="password" name="sign_in_password" id="sign_in_Cpassword" required>
+           <img id="eyeicon1" src="resorces/eye-close.png"></div><br><br>
+        <div class="button">
+           <button class="b" type="submit">Register</button>
+           <button class="b"> <a href="login.html" style="text-decoration: none;color: #fff;"> Sign_In</a></button>
+        </div>
+        </div>
+    </form>
+    </div>
+    <script>
+        let eyeicon=document.getElementById("eyeicon");
+        let password=document.getElementById("sign_in_password");
+        
+
+        eyeicon.onclick =function(){
+            if(password.type=="password"){
+                password.type="text";
+                eyeicon.src ="resorces/eye-open.png";
+            }
+            else{
+                password.type="password";
+                eyeicon.src ="resorces/eye-close.png";
+            }
+        }
+        
+        let eyeicon1=document.getElementById("eyeicon1");
+        let Cpassword=document.getElementById("sign_in_Cpassword");
+        eyeicon1.onclick=function(){
+            if(Cpassword.type=="password"){
+                 Cpassword.type="text";
+                 eyeicon1.src ="resorces/eye-open.png";
+            }
+            else{
+                Cpassword.type="password";
+                eyeicon1.src ="resorces/eye-close.png";
+            }
+        }
+
+
+        function submitHandler(e){
+              e.preventDefault();
+              let username=document.getElementById("Sign_in_username").value;
+              let password=document.getElementById("sign_in_password").value;
+              let confirm_password=document.getElementById("sign_in_Cpassword").value;
+              if(password !=confirm_password){
+                alert("Invalid password");
+              }
+              else{
+                let authData = JSON.parse(localStorage.getItem('auth')) || [];
+                console.log(authData);
+                let userfound=false;
+                console.log("hello");
+                for(ele of authData)
+                {
+                    if(username === ele.username)
+                    {
+                        userfound=true;
+                        console.log(userfound);
+                        alert("Failed.. Please try another Username or Password");
+                        // location.href="index.html";
+                    }
+                }
+                console.log(userfound);
+                //for registration
+                if(!userfound){
+                    console.log(userfound);
+                    const userDetail={'username':username ,'password': password};
+                    authData.push(userDetail);
+                    localStorage.setItem('auth',JSON.stringify(authData));
+                    alert("success..");
+                    // location.href="index.html";
+                }
+              }
+        }
+        document.getElementById("signup_form").addEventListener("submit",(e) => submitHandler(e));
+         
+    </script>
+</body>
+</html>

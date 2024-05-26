@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="resorces/user(1).png">
+    <style>
+        .container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+        .container img{
+               height: 400px;
+               width: 400px;
+            }
+        .input{
+              padding-left: 10px;
+              display: flex;
+              justify-content: space-between;
+              flex-direction: column;
+              height: 400px;
+             
+            }
+        .input h2{
+            margin-top: 0px;
+        }
+        .b{
+            color: #fff;
+            padding: 10px 5px;
+            background-color: blueviolet;
+        }
+        .input-box{
+            background: #fff;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .input-box img{
+            width: 20px; /* Adjust width as needed */
+            height: 20px; /* Adjust height as needed */
+            cursor: pointer;
+            position: absolute; /* Add this line */
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="login-form-container-id">
+    <div class="container">
+        <img  src="resorces/ed.jpg">
+        <div class="input">
+           <h1>Login Here</h1>
+           <div class="input-box"><label for="Sign_in_username">Username : </label>
+           <input type="text" name="sign_in_username" id="sign_in_username" required>  </div>
+           <div class="input-box"><label for="sign_in_password">Password :</label>
+           <input type="password" name="sign_in_password" id="sign_in_password" required><br>
+            <img id="eyeicon" src="resorces/eye-close.png"></div>
+           <button class="b" type="submit">Sign In</button>
+           <a  href="signUp.html" style=" text-decoration: none; color: black;" >Not Register ? click here to signUp</a>
+        </div>
+    </div>
+    </form> 
+    <script>
+        let eyeicon=document.getElementById("eyeicon");
+        let password=document.getElementById("sign_in_password");
+        eyeicon.onclick =function(){
+            if(password.type=="password"){
+                password.type="text";
+                eyeicon.src ="resorces/eye-open.png";
+            }
+            else{
+                password.type="password";
+                eyeicon.src ="resorces/eye-close.png";
+            }
+        }
+        
+        
+        function submitHandler(e){
+            e.preventDefault();
+	        // console.log('hello from custom event handler',e);
+            const username = document.getElementById('sign_in_username').value;
+            const password = document.getElementById('sign_in_password').value;
+            console.log(username,password);
+            const authData = JSON.parse(localStorage.getItem('auth')) || [];
+           // validate that the user has already registered if not show error
+	       let userFound = false;
+	       let password_from_auth = '';
+           for (userObj of authData){
+			if (userObj.username === username) {
+		 		userFound = true;
+                localStorage.setItem("current_username",username);
+				password_from_auth = userObj.password;
+			}
+            }
+            if(!userFound){
+                alert("username not found.Please sign up first");
+            }
+            else if (password_from_auth != password){
+		           alert('incorrect password. Please try again')
+            }
+            else{
+                localStorage.setItem('is_user_logged_in',true);
+                location.href = 'index.html'
+	}
+	}
+const formHTMLEle = document.getElementById('login-form-container-id'); 
+formHTMLEle.addEventListener('submit', (e) => submitHandler(e))
+    </script>
+</body>
+</html>

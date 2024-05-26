@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grow Your Grade</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="icon" href="resorces/home.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <p> GYG </p>
+    </div>
+    <ul>
+      <li><a href="index.html"> Home </a></li>
+      <li><a href="about.html"> About </a></li>
+      <li><a href="login.html"> Login </a></li>
+      <li><button onclick="logout()"><i class="fa-solid fa-right-from-bracket fa-2xl "></i></button></li>
+    </ul>
+  </nav>
+
+  <div class="cont">
+    <div class="container">    
+      <div class="dropdown">
+        <div class="select">
+            <span class="selected"> Courses </span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li>BTech</li>
+        </ul>
+      </div>
+      <div class="dropdown">
+        <div class="select">
+            <span class="selected"> Year </span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li>First Year</li>
+            <li>Second Year</li>
+            <li>Third Year</li>
+            <li>Fourth Year</li>
+        </ul>
+      </div>
+     <center> <button class="b" onclick=myFunction()> Submit</button></center>
+    </div>
+</div> 
+<div class="footer"> 
+    <p>Connect With Me</p>
+    
+    <div class="g"> <a  href="https://github.com/kavyac31"><i class="fa-brands fa-github fa-2xl" style="color: #fff;"></i></a></div>
+    <div class="l"><a href="https://www.linkedin.com/in/kavyac31/" ><i class="fa-brands fa-linkedin fa-2xl" style="color: #fff;"></i></a></div>
+    <div class="gmail"><a href="kavyachaurasia3112@gmail.com"><i class="fa-regular fa-envelope fa-2xl " style="color: #fff;"></i></a></div>
+    <div class="youtube"><a href="https://www.youtube.com/channel/UCI1JUv5Amsni6S5kPtvcvAg"><i class="fa-brands fa-youtube fa-2xl" style="color: #fff;"></i></a></div>
+    <div class="insta"><a href="https://www.instagram.com/kavyachaurasia31?igsh=MWlsaG9pbms5OXg2MA=="><i class="fa-brands fa-instagram fa-2xl" style="color: #fff;"></i></a></div>
+</div>
+      <script>
+        // if(JSON.parse(localStorage.getItem('is_user_logged_in'))===false){
+        //     location.href="login.html";
+        // }
+        function logout()
+        {
+            localStorage.setItem('is_user_logged_in',false);
+            localStorage.setItem('current_username','');
+            location.href="login.html";
+        }
+
+        function myFunction() {
+        let course = document.querySelector(".cont .container .dropdown:nth-child(1) .selected").innerText.trim();
+        let year = document.querySelector(".cont .container .dropdown:nth-child(2) .selected").innerText.trim();
+
+        if (course.toLowerCase() === "btech") {
+            switch (year) {
+                case "First Year":
+                    window.location.href = "btech_year1.html";
+                    break;
+                case "Second Year":
+                    window.location.href = "btech_year2.html";
+                    break;
+                case "Third Year":
+                    window.location.href = "btech_year3.html";
+                    break;
+                case "Fourth Year":
+                    window.location.href = "btech_year4.html";
+                    break;
+                default:
+                    alert("Invalid input. Please try again.");
+            }
+        } else {
+            alert("Invalid input. Please try again.");
+        }
+    }
+        const dropdowns= document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown =>{
+            const select = dropdown.querySelector('.select');
+            const caret = dropdown.querySelector('.caret');
+            const menu = dropdown.querySelector('.menu');
+            const options = dropdown.querySelectorAll('.menu li');
+            const selected = dropdown.querySelector('.selected');
+
+            select.addEventListener('click' ,() => {
+                select.classList.toggle('select-clicked');
+                caret.classList.toggle('caet-rotate');
+                menu.classList.toggle('menu-open');
+            });
+            options.forEach(option =>{
+                option.addEventListener('click',() =>{
+                    selected.innerText=option.innerText;
+                    select.classList.remove('select-clicked');
+                    caret.classList.remove('caret-rotate');
+                    menu.classList.remove('menu-open');
+                    options.forEach(option =>{
+                        option.classList.remove('active');
+                    });
+                    option.classList.add('active');
+                });
+            });
+        });
+        
+      </script>
+</body>
+
+</html>
