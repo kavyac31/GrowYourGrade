@@ -6,174 +6,226 @@
     <title>SignUp</title>
     <link rel="icon" href="resorces/user(1).png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <style>
-        *{
-            margin: 0%;
-            padding: 0%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-         .border{
-            border:blueviolet; 
-            border-width:14px; 
-            border-style:solid;
-            
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
+
+        .border {
+            border: 14px solid blueviolet;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
         .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	gap: 20px;
-}
-.container img {
-	height: 400px;
-	width: 400px;
-}
-.signup-form-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 400px;
-}
- .container input h1 {
-	margin-top: 0px;
-} 
-/* .p{ 
-    margin-top: 0px;
-} */
-.button{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.b{
-    border-radius: 20% ;
-    color: #fff;
-    background-color: blueviolet;
-    height: 5vh;
-    width: 5vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.input-box{
-            background: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px; /* Adjust maximum width of container */
+            margin: 0 auto; /* Center container horizontally */
+            padding: 20px;
+        }
+
+        .container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .signup-form-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff; /* Ensure form has a white background */
+            border-radius: 10px;
+        }
+
+        .signup-form-container h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-box {
             display: flex;
             align-items: center;
             position: relative;
-}
-.input-box img{
-            width: 20px; /* Adjust width as needed */
-            height: 20px; /* Adjust height as needed */
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            width: 40%;
+            margin-right: 10px;
+        }
+
+        .input-box input {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-box img {
+            width: 20px;
+            height: 20px;
             cursor: pointer;
-            position: absolute; /* Add this line */
-            right: 80px;
-}
-.input-box1{
-            background: #fff;
-            display: flex;
-            align-items: center;
-            position: relative;
-}
-.input-box1 img{
-            width: 20px; /* Adjust width as needed */
-            height: 20px; /* Adjust height as needed */
-            cursor: pointer;
-            position: absolute; /* Add this line */
+            position: absolute;
             right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .button {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .button .b {
+            border-radius: 20%;
+            color: #fff;
+            background-color: blueviolet;
+            height: 40px; /* Adjust button height */
+             min-width: 120px; /* Adjust button width */
+             display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            text-decoration: none; /* Ensure link appearance is consistent */
+            border: none; /* Remove default button border */
+    
+        }
+
+.button .b a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent (button) */
+    display: block; /* Make the <a> tag a block element */
+    width: 100%; /* Occupy full width of parent button */
+    height: 100%; /* Occupy full height of parent button */
+    line-height: inherit; /* Inherit line-height from parent */
+    align-items: center;
+    text-align: center;
+    padding: inherit; /* Inherit padding from parent */
 }
 
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
 
+            .container img {
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 20px; /* Adjust margin for smaller screens */
+            }
+
+            .signup-form-container {
+                width: 90%;
+                max-width: 100%;
+                margin-top: 20px; /* Adjust margin for smaller screens */
+            }
+
+            .input-box label, .input-box input {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .button .b {
+                min-width: auto;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="border">
-    <form class="container" id="signup_form">
-        <img  src="resorces/ed.jpg">
-        <div class="input">
-           <h1 class="p"> Welcome <i class="fa-solid fa-user fa-2xl"></i></h1><br><br>
-           <label for="Sign_in_username">Username : </label>
-           <input type="text" name="Sign_in_username" id="Sign_in_username" required><br><br>
-           <div class="input-box"><label for="sign_in_password">Password :</label>
-           <input type="password" name="sign_in_password" id="sign_in_password" required>
-           <img id="eyeicon" src="resorces/eye-close.png"></div><br><br>
-           <div class="input-box1"><label for="sign_in_password"> Confirmed Password :</label>
-           <input type="password" name="sign_in_password" id="sign_in_Cpassword" required>
-           <img id="eyeicon1" src="resorces/eye-close.png"></div><br><br>
-        <div class="button">
-           <button class="b" type="submit">Register</button>
-           <button class="b"> <a href="login.html" style="text-decoration: none;color: #fff;"> Sign_In</a></button>
+        <div class="container">
+            <img src="resorces/ed.jpg" alt="Education Image">
+            <div class="signup-form-container">
+                <h1>Welcome <i class="fa-solid fa-user fa-2xl"></i></h1>
+                <div class="input-box">
+                    <label for="Sign_in_username">Username:</label>
+                    <input type="text" name="Sign_in_username" id="Sign_in_username" required>
+                </div>
+                <div class="input-box">
+                    <label for="sign_in_password">Password:</label>
+                    <input type="password" name="sign_in_password" id="sign_in_password" required>
+                    <img id="eyeicon" src="resorces/eye-close.png" alt="Toggle Password Visibility">
+                </div>
+                <div class="input-box">
+                    <label for="sign_in_Cpassword">Confirm Password:</label>
+                    <input type="password" name="sign_in_password" id="sign_in_Cpassword" required>
+                    <img id="eyeicon1" src="resorces/eye-close.png" alt="Toggle Password Visibility">
+                </div>
+                <div class="button">
+                    <button class="b" type="submit">Register</button>
+                    <button class="b"><a href="testlogin.html">Sign In</a></button>
+                </div>
+            </div>
         </div>
-        </div>
-    </form>
     </div>
     <script>
-        let eyeicon=document.getElementById("eyeicon");
-        let password=document.getElementById("sign_in_password");
-        
+        let eyeicon = document.getElementById("eyeicon");
+        let password = document.getElementById("sign_in_password");
 
-        eyeicon.onclick =function(){
-            if(password.type=="password"){
-                password.type="text";
-                eyeicon.src ="resorces/eye-open.png";
-            }
-            else{
-                password.type="password";
-                eyeicon.src ="resorces/eye-close.png";
-            }
-        }
-        
-        let eyeicon1=document.getElementById("eyeicon1");
-        let Cpassword=document.getElementById("sign_in_Cpassword");
-        eyeicon1.onclick=function(){
-            if(Cpassword.type=="password"){
-                 Cpassword.type="text";
-                 eyeicon1.src ="resorces/eye-open.png";
-            }
-            else{
-                Cpassword.type="password";
-                eyeicon1.src ="resorces/eye-close.png";
+        eyeicon.onclick = function () {
+            if (password.type == "password") {
+                password.type = "text";
+                eyeicon.src = "resorces/eye-open.png";
+            } else {
+                password.type = "password";
+                eyeicon.src = "resorces/eye-close.png";
             }
         }
 
+        let eyeicon1 = document.getElementById("eyeicon1");
+        let Cpassword = document.getElementById("sign_in_Cpassword");
+        eyeicon1.onclick = function () {
+            if (Cpassword.type == "password") {
+                Cpassword.type = "text";
+                eyeicon1.src = "resorces/eye-open.png";
+            } else {
+                Cpassword.type = "password";
+                eyeicon1.src = "resorces/eye-close.png";
+            }
+        }
 
-        function submitHandler(e){
-              e.preventDefault();
-              let username=document.getElementById("Sign_in_username").value;
-              let password=document.getElementById("sign_in_password").value;
-              let confirm_password=document.getElementById("sign_in_Cpassword").value;
-              if(password !=confirm_password){
-                alert("Invalid password");
-              }
-              else{
+        function submitHandler(e) {
+            e.preventDefault();
+            let username = document.getElementById("Sign_in_username").value;
+            let password = document.getElementById("sign_in_password").value;
+            let confirm_password = document.getElementById("sign_in_Cpassword").value;
+            if (password != confirm_password) {
+                alert("Passwords do not match");
+            } else {
                 let authData = JSON.parse(localStorage.getItem('auth')) || [];
-                console.log(authData);
-                let userfound=false;
-                console.log("hello");
-                for(ele of authData)
-                {
-                    if(username === ele.username)
-                    {
-                        userfound=true;
-                        console.log(userfound);
-                        alert("Failed.. Please try another Username or Password");
-                        // location.href="index.html";
+                let userfound = false;
+                for (let ele of authData) {
+                    if (username === ele.username) {
+                        userfound = true;
+                        alert("Username already exists. Please try another username.");
                     }
                 }
-                console.log(userfound);
-                //for registration
-                if(!userfound){
-                    console.log(userfound);
-                    const userDetail={'username':username ,'password': password};
+                if (!userfound) {
+                    const userDetail = { 'username': username, 'password': password };
                     authData.push(userDetail);
-                    localStorage.setItem('auth',JSON.stringify(authData));
-                    alert("success..");
-                    // location.href="index.html";
+                    localStorage.setItem('auth', JSON.stringify(authData));
+                    alert("Registration successful");
                 }
-              }
+            }
         }
-        document.getElementById("signup_form").addEventListener("submit",(e) => submitHandler(e));
-         
+        document.getElementById("signup_form").addEventListener("submit", (e) => submitHandler(e));
     </script>
 </body>
 </html>
