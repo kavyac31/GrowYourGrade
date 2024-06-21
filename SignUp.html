@@ -149,11 +149,12 @@
     </style>
 </head>
 <body>
-    <div class="border">
-        <div class="container">
-            <img src="resorces/ed.jpg" alt="Education Image">
-            <div class="signup-form-container">
-                <h1>Welcome <i class="fa-solid fa-user fa-2xl"></i></h1>
+  <div class="border">
+    <div class="container">
+        <img src="resorces/ed.jpg" alt="Education Image">
+        <div class="signup-form-container">
+            <h1>Welcome <i class="fa-solid fa-user fa-2xl"></i></h1>
+            <form id="signup_form"> <!-- Add form element with ID -->
                 <div class="input-box">
                     <label for="Sign_in_username">Username:</label>
                     <input type="text" name="Sign_in_username" id="Sign_in_username" required>
@@ -170,11 +171,13 @@
                 </div>
                 <div class="button">
                     <button class="b" type="submit">Register</button>
-                    <button class="b"><a href="login.html">Sign In</a></button>
+                    <a class="b" href="login.html">Sign In</a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+</div>
+
     <script>
         let eyeicon = document.getElementById("eyeicon");
         let password = document.getElementById("sign_in_password");
