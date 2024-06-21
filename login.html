@@ -6,109 +6,181 @@
     <title>Login</title>
     <link rel="icon" href="resorces/user(1).png">
     <style>
-        .container{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-        .container img{
-               height: 400px;
-               width: 400px;
-            }
-        .input{
-              padding-left: 10px;
-              display: flex;
-              justify-content: space-between;
-              flex-direction: column;
-              height: 400px;
-             
-            }
-        .input h2{
-            margin-top: 0px;
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        .b{
-            color: #fff;
-            padding: 10px 5px;
-            background-color: blueviolet;
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            flex-wrap: wrap;
+            text-align: center;
         }
-        .input-box{
+        .container img {
+            height: 300px;
+            width: 300px;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        .input {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 400px;
+            max-width: 100%;
+            width: 100%;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .input h1 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .input-box {
             background: #fff;
             display: flex;
             align-items: center;
             position: relative;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        .input-box img{
-            width: 20px; /* Adjust width as needed */
-            height: 20px; /* Adjust height as needed */
+        .input-box label {
+            margin-right: 10px;
+        }
+        .input-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 5px;
+        }
+        .input-box img {
+            width: 20px;
+            height: 20px;
             cursor: pointer;
-            position: absolute; /* Add this line */
+            position: absolute;
             right: 10px;
+        }
+        .b {
+            color: #fff;
+            padding: 10px 20px;
+            background-color: blueviolet;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .b:hover {
+            background-color: darkviolet;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            margin-top: 10px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .container img {
+                height: 250px;
+                width: 250px;
+            }
+            .input {
+                width: 100%;
+                max-width: 400px;
+            }
+            .input-box img {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container img {
+                height: 200px;
+                width: 200px;
+            }
+            .input {
+                height: auto;
+            }
+            .input h1 {
+                font-size: 20px;
+            }
+            .input-box img {
+                width: 16px;
+                height: 16px;
+            }
         }
     </style>
 </head>
-
 <body>
     <form id="login-form-container-id">
-    <div class="container">
-        <img  src="resorces/ed.jpg">
-        <div class="input">
-           <h1>Login Here</h1>
-           <div class="input-box"><label for="Sign_in_username">Username : </label>
-           <input type="text" name="sign_in_username" id="sign_in_username" required>  </div>
-           <div class="input-box"><label for="sign_in_password">Password :</label>
-           <input type="password" name="sign_in_password" id="sign_in_password" required><br>
-            <img id="eyeicon" src="resorces/eye-close.png"></div>
-           <button class="b" type="submit">Sign In</button>
-           <a  href="SignUp.html" style=" text-decoration: none; color: black;" >Not Register ? click here to signUp</a>
+        <div class="container">
+            <img src="resorces/ed.jpg" alt="Image">
+            <div class="input">
+                <h1>Login Here</h1>
+                <div class="input-box">
+                    <label for="sign_in_username">Username: </label>
+                    <input type="text" name="sign_in_username" id="sign_in_username" required>
+                </div>
+                <div class="input-box">
+                    <label for="sign_in_password">Password: </label>
+                    <input type="password" name="sign_in_password" id="sign_in_password" required>
+                    <img id="eyeicon" src="resorces/eye-close.png" alt="Toggle Password Visibility">
+                </div>
+                <button class="b" type="submit">Sign In</button>
+                <a href="SignUp.html">Not Registered? Click here to sign up</a>
+            </div>
         </div>
-    </div>
-    </form> 
+    </form>
     <script>
-        let eyeicon=document.getElementById("eyeicon");
-        let password=document.getElementById("sign_in_password");
-        eyeicon.onclick =function(){
-            if(password.type=="password"){
-                password.type="text";
-                eyeicon.src ="resorces/eye-open.png";
-            }
-            else{
-                password.type="password";
-                eyeicon.src ="resorces/eye-close.png";
+        let eyeicon = document.getElementById("eyeicon");
+        let password = document.getElementById("sign_in_password");
+        eyeicon.onclick = function() {
+            if (password.type === "password") {
+                password.type = "text";
+                eyeicon.src = "resorces/eye-open.png";
+            } else {
+                password.type = "password";
+                eyeicon.src = "resorces/eye-close.png";
             }
         }
-        
-        
-        function submitHandler(e){
+
+        function submitHandler(e) {
             e.preventDefault();
-	        // console.log('hello from custom event handler',e);
             const username = document.getElementById('sign_in_username').value;
             const password = document.getElementById('sign_in_password').value;
-            console.log(username,password);
             const authData = JSON.parse(localStorage.getItem('auth')) || [];
-           // validate that the user has already registered if not show error
-	       let userFound = false;
-	       let password_from_auth = '';
-           for (userObj of authData){
-			if (userObj.username === username) {
-		 		userFound = true;
-                localStorage.setItem("current_username",username);
-				password_from_auth = userObj.password;
-			}
+            let userFound = false;
+            let password_from_auth = '';
+            for (let userObj of authData) {
+                if (userObj.username === username) {
+                    userFound = true;
+                    localStorage.setItem("current_username", username);
+                    password_from_auth = userObj.password;
+                }
             }
-            if(!userFound){
-                alert("username not found.Please sign up first");
+            if (!userFound) {
+                alert("Username not found. Please sign up first.");
+            } else if (password_from_auth !== password) {
+                alert('Incorrect password. Please try again.');
+            } else {
+                localStorage.setItem('is_user_logged_in', true);
+                location.href = 'index.html';
             }
-            else if (password_from_auth != password){
-		           alert('incorrect password. Please try again')
-            }
-            else{
-                localStorage.setItem('is_user_logged_in',true);
-                location.href = 'index.html'
-	}
-	}
-const formHTMLEle = document.getElementById('login-form-container-id'); 
-formHTMLEle.addEventListener('submit', (e) => submitHandler(e))
+        }
+        const formHTMLEle = document.getElementById('login-form-container-id'); 
+        formHTMLEle.addEventListener('submit', (e) => submitHandler(e));
     </script>
 </body>
 </html>
